@@ -12,6 +12,8 @@ https://drive.google.com/drive/folders/15xc8bAW45x2zZK_5VDlfhNzUgl6PlYns?usp=sha
 
 **Артефакты:**
 ---
+Доска YouGile: 
+
 Фоны, спрайты: https://disk.yandex.ru/d/7NisFJoJ7NRB7A
 
 Музыка, звуки: https://disk.yandex.ru/d/vTfQx34_jkVDtQ
