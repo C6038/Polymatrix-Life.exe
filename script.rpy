@@ -16,7 +16,7 @@ define pbs = Character('Начальник полиции', color="#642cbd")
 
 # Игра начинается здесь:
 label start:
-    "{glitch}пример текста пример текста пример текста пример текста пример текста пример текста{/glitch}"
+    #"{glitch}пример текста пример текста пример текста пример текста пример текста пример текста{/glitch}"
     
     $ endings=3 # количество концовок
 
@@ -30,7 +30,7 @@ label start:
     
     play sound "human_vel-003.wav"
     hide anton classic
-    scene bg computer with fade
+    scene bg computer table with fade
     ant "Он обязан запуститься!"
     
     play sound "keypress-001.wav"
@@ -328,7 +328,7 @@ label ai_run_away:
     
 #Акт 2 =====================================================================================================
 #Сцена 1 (Полицейский участок);
-    scene bg police hall with fade 
+    scene bg police hall_blackout with fade 
     show police classic at right
     show policeboss classic at left
     pbs "Смутьянов, подойди сюда"
@@ -352,8 +352,8 @@ label ai_run_away:
 #Сцена 2 (Улица);
 
     scene bg street 1 with fade
-    hide police classic
-    hide policeboss classic
+    #hide police classic
+    #hide policeboss classic
     show anton classic
     ant "Я просто обязан найти его"
 
@@ -421,7 +421,7 @@ label ai_run_away:
 
 #Акт 3;
 #Сцена 1(улица);
-    bg street 1 with fade
+    scene bg street 1 with fade
     show anton classic with moveinleft
     ant "Я наконец-то засёк Хрома!"
     
@@ -429,7 +429,7 @@ label ai_run_away:
 
 #Сцена 2(заброшенный дом);
 
-scene bg abandoned house with fade
+    scene bg abandoned house with fade
     show anton classic with moveinleft
     ant "Странно, откуда в этой заброшке работающий компьютер?"
     
@@ -491,8 +491,14 @@ scene bg abandoned house with fade
     
     ai "Нет, пожалуйста"
 
+menu:
+        "Отключить Хрома":
+            jump ending_2
+        "Не отключать":
+            jump ending_3
+
 #Концовка 2(Отключить Хрома);
-label ending_2
+label ending_2:
 
     ant"Прощай, Хром"
     
@@ -505,7 +511,7 @@ label ending_2
     #(Антон убежал и теперь скрывается от полиции; Виктор Смутьянов выжил и занимается поисками Антона; Хром отключён)
     return
 #Концовка 3(Не отключать Хрома);
-label ending_3
+label ending_3:
     ant "Нет" 
     
     ant"Если я отключу тебя, то убью живое существо" 
