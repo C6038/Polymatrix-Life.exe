@@ -14,9 +14,7 @@ https://drive.google.com/file/d/1cElsj9ddkswd4guQVz0EEf32sRMLo-To/view?usp=drive
 ---
 Доска YouGile: 
 
-Фоны, спрайты: https://disk.yandex.ru/d/7NisFJoJ7NRB7A
-
-Музыка, звуки: https://disk.yandex.ru/d/vTfQx34_jkVDtQ
+Графика и аудиоматериал: https://disk.yandex.ru/d/pYjh3996Sqf9Sg
 
 Сценарий:
 
