@@ -354,6 +354,17 @@ screen main_menu():
     ## заменять этот.
     tag menu
 
+    imagemap:
+        ground "gui/main_menu.png"
+        idle "gui/main_menu_normal.png"
+        hover "gui/main_menu_hover.png"
+        hotspot(1393,160,475,100) action Start() #Начать
+        hotspot(1393,285,475,100) action ShowMenu("load") #Загрузить
+        hotspot(1393,410,475,100) action ShowMenu("preferences") #Настройки
+        hotspot(1393,535,475,100) action ShowMenu("about") #Об игре
+        hotspot(1393,660,475,100) action ShowMenu("help") #Помощь
+        hotspot(1393,785,475,100) action Quit() #Выход
+""" 
     add gui.main_menu_background
 
     ## Эта пустая рамка затеняет главное меню.
@@ -374,7 +385,7 @@ screen main_menu():
 
             text "[config.version]":
                 style "main_menu_version"
-
+ """
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox

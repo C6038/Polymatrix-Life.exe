@@ -20,6 +20,7 @@ label start:
     
     $ endings=3 # количество концовок
 
+    play music maintheme loop
     scene bg ailaunch 1
     show anton classic
     play sound "human_vel-001.wav"
@@ -177,6 +178,7 @@ label start:
     
     ant "Хорошо, можешь взять себе любое"
     
+    play sound nameloading
     scene bg ailaunch 4
     ainameless "{cps=10}Loading..."
     
@@ -193,7 +195,7 @@ label start:
     
     ai "Хорошо, создатель"
     
-    play sound "computer-pack-away.wav"
+    play sound shuttingdown
     scene bg black with fade
     "Антон выключает компьютер и вытаскивает флешку с записанным Хромом"
     
@@ -259,7 +261,7 @@ label ending_1:
     
     max "Ну ладно, вредина, у кого-то другого попрошу"
     
-    scene bg ending 1 with fade
+    scene bg ending_1 with fade
     
     "==Антон завершает обучение ИИ и получает премию Тьюринга, вписывая себя и Урфу в историю=="
     
@@ -412,10 +414,12 @@ label ai_run_away:
     pol "Ты 40 минут кричал тут об этом"
     
     pol "Да ещё и знал детали, доступные только следствию"
+    play sound run1
     hide anton classic with moveoutleft
 #ant (убегает)
     
     pol "Почему всё всегда так сложно?"
+    play sound run2
     hide police classic with moveoutleft
 #pol (Идёт за Антоном)
 
@@ -472,12 +476,13 @@ label ai_run_away:
     ant"Подождите, я сейчас объясню"
     
     pol "Хватит, пошли в участок"
-    
+    show anton mad
     ant "Да послушайте вы"
-
-#(Между Антоном и Виктором завязывается драка) 
+    play sound fight if_changed
+    "Между Антоном и Виктором завязывается драка"
     ai "Создатель!"
-
+    play sound electro 
+    show police pain
 #(Хром бьёт Виктора током)
     ant "..."
     
@@ -504,7 +509,7 @@ label ending_2:
     
     ai"Я не хочу уходить..."
     
-    #(Антон отключает Хрома) 
+    "Антон отключает Хрома"
     
     ant"Пора бежать, пока сюда кто-то не пришёл" 
     
@@ -524,7 +529,7 @@ label ending_3:
     
     ai "Прощай, Антон" 
     
-    #(Хром уходит) 
+    "Хром уходит" 
     
     ant "Осталось только столкнуться с последствиями своих действий" 
     
