@@ -20,7 +20,7 @@ label start:
     
     $ endings=3 # количество концовок
 
-    play music maintheme loop
+    play music ambienttheme loop volume 0.2
     scene bg ailaunch 1
     show anton classic
     play sound "human_vel-001.wav"
@@ -53,6 +53,7 @@ label start:
     scene bg ailaunch 2 with pixellate
     "???" "Что происходит?"
     
+    play music chromvajnost loop volume 0.2
     ant "Что за... Кто это?"
     
     "???" "Где я?"
@@ -178,10 +179,10 @@ label start:
     
     ant "Хорошо, можешь взять себе любое"
     
-    play sound nameloading
+    play sound nameloading volume 0.2
     scene bg ailaunch 4
     ainameless "{cps=10}Loading..."
-    
+    stop sound fadeout 1.0
     scene bg ailaunch 5
     ai "Я хочу называться \"Хром\""
     
@@ -203,8 +204,9 @@ label start:
     
     "Антон ложится спать"
    
+    play music ambienttheme loop volume 0.2
     ""
-
+    
     nvldialog "Дополнительная информация"
     nvldialog "Несмотря на фантастичность событий новеллы, их можно сопоставить с реальной работой архитектора систем искусственного интеллекта."
     nvldialog "Как и Антон, настоящий архитектор будет работать не только над созданием самой модели интеллекта: также он будет обучать её."
@@ -213,7 +215,7 @@ label start:
     
     nvl clear
     
-    scene bg irit with fade
+    scene bg street home with fade
     
     
 #Сцены 2-5 =====================================================================================================
@@ -259,11 +261,17 @@ label ending_1:
     
     ant "Я сказал нет"
     
+    show max angry
     max "Ну ладно, вредина, у кого-то другого попрошу"
     
     scene bg ending_1 with fade
+    show anton classic at center
+    "Ведущий" "И премией Тьюринга за исключительные успехи в разработке искусственного интеллекта награждается…"
+    "Ведущий" "ЯКОВЛЕВ АНТОН!"
     
-    "==Антон завершает обучение ИИ и получает премию Тьюринга, вписывая себя и Урфу в историю=="
+    show anton shock
+    ant "Это невероятно, спасибо всем огромное"
+
     
     "Получена концовка 1 из [endings]"
     
@@ -285,15 +293,20 @@ label ai_run_away:
     
     max "Пора загружать на флешку"
     
+    scene bg irit class with fade
+    show max classic at right
+    play sound electro
     "Мерцание света"
     
     max "ЧТО ПРОИСХОДИТ?!"
     
+    play sound run2
     hide max classic with moveoutleft
     "Максим выбегает из кабинета"
     
-    scene bg black
+    scene bg ai
     show ai classic
+    stop sound fadeout 0.5
     ai "Я ЖИВ!"
     
     ai "Как он мог так со мной поступить..."
@@ -331,10 +344,11 @@ label ai_run_away:
 #Акт 2 =====================================================================================================
 #Сцена 1 (Полицейский участок);
     scene bg police hall_blackout with fade 
-    show police classic at right
-    show policeboss classic at left
+    
+    show policeboss classic at right
     pbs "Смутьянов, подойди сюда"
     
+    show police classic at left with moveinleft
     pol "Что там опять?"
 
     pbs "Ты совсем за новостями не следишь?!"
@@ -357,6 +371,7 @@ label ai_run_away:
     #hide police classic
     #hide policeboss classic
     show anton classic
+    play sound ходьба if_changed volume 0.5
     ant "Я просто обязан найти его"
 
     ant "А если полиция начнёт расследовать это дело?"
@@ -365,22 +380,25 @@ label ai_run_away:
 
     ant "Нет я не должен даже так думать. Я обязательно найду Хрома!"
 
+    stop sound fadeout 0.5
 #Сцена 3(Сеть);
 
     scene bg ai faced with fade
     hide anton classic
-    ai "Эх, я не могу выйти из внутренней сити этого города"
+    play sound shuttingdown volume 0.5
+    ai "Эх, я не могу выйти из внутренней сети этого города"
 
     ai "Ещё и случайно нарушил работу нескольких банков"
 
     ai "Ну вроде бы никто не заметил"
 
     "Но все заметили"
-
+    stop sound fadeout 0.5
 #Сцена 4 (Улица(уже другая));
     
     scene bg street 2 with fade
     show police classic at right
+    play sound ходьба if_changed volume 0.5
     pol "Чёрт, опять работа"
     
     pol "Ну, если учесть недавние опубликованные личные данные сотрудников банков..."
@@ -388,7 +406,7 @@ label ai_run_away:
     pol "Все эти события - не случайности, а преступления"
     
     pol "И моё чутьё подсказывает мне, что преступник близко"
-
+    stop sound fadeout 0.5
 #Сцена 5(ещё одна улица...);
 
     hide anton classic with moveoutleft
@@ -404,7 +422,7 @@ label ai_run_away:
     with moveinright
     show anton classic at left
     pol "Пацан, тебе бы научитья в мыслях разговаривать"
-
+    stop sound fadeout 0.5
     ant "Что, простите?"
     
     pol "Старший следователь Смутьянов. Вы задержаны по подозрению в массовом отключении электричества и взломе нескольких банков"
@@ -466,8 +484,11 @@ label ai_run_away:
     
     ai "Мне осталось только выбраться из сети этого города" 
 
+    play sound run2
+
     "Виктор забегает в комнату"
 #Виктор: (забегает в комнату) 
+    stop sound fadeout 2.0
     show anton classic at left
     show police classic at right
     with moveinright
@@ -479,13 +500,22 @@ label ai_run_away:
     show anton mad
     ant "Да послушайте вы"
     play sound fight if_changed
+    with hpunch 
+    with vpunch
+    with hpunch
     "Между Антоном и Виктором завязывается драка"
+    with hpunch 
+    with vpunch
+    with hpunch
     ai "Создатель!"
+    with vpunch
     play sound electro 
     show police pain
+    pause 1.0
+    hide police pain with moveoutbottom
 #(Хром бьёт Виктора током)
     ant "..."
-    
+    show anton angry
     ant "Ты убил его!" 
     
     ai"Я..."
@@ -505,6 +535,7 @@ menu:
 #Концовка 2(Отключить Хрома);
 label ending_2:
 
+    show anton classic
     ant"Прощай, Хром"
     
     ai"Я не хочу уходить..."
@@ -513,10 +544,23 @@ label ending_2:
     
     ant"Пора бежать, пока сюда кто-то не пришёл" 
     
+    play music fallingintoinfinity loop volume 0.2
+    scene bg ending_2 0 with fade
+    "Кто-то" "Скорей включай телевизор, там сейчас про того хакера будут рассказывать!"
+    scene bg ending_2 3
+    "Кто-то" "Уже бегу!"
+    scene bg ending_2 2
+    "Ведущий" "...а о сложившейся ситуации вам расскажет чудом выживший Виктор Смутьянов, что вёл дело от начала и до конца"
+    pol "К сожалению, хакер всё ещё на свободе."
+    "Кто-то" "Да что ж такое-то!"
+    pol "Но вот моё слово: розыск кончится только тогда, когда этот негодяй окажется на скамье подсудимых."
+    scene black with fade
     #(Антон убежал и теперь скрывается от полиции; Виктор Смутьянов выжил и занимается поисками Антона; Хром отключён)
+    "Получена концовка 2 из [endings]"
     return
 #Концовка 3(Не отключать Хрома);
 label ending_3:
+    show anton classic
     ant "Нет" 
     
     ant"Если я отключу тебя, то убью живое существо" 
@@ -533,6 +577,24 @@ label ending_3:
     
     ant "Осталось только столкнуться с последствиями своих действий" 
     
+    play music fallingintoinfinity loop volume 0.2
+    scene bg ending_2 0 with fade
+    "Кто-то" "Скорей включай телевизор, там сейчас про того хакера будут рассказывать!"
+    scene bg ending_2 3
+    "Кто-то" "Уже бегу!"
+    scene bg ending_2 2
+    "Ведущий" "...а о сложившейся ситуации вам расскажет чудом выживший Виктор Смутьянов, что вёл дело от начала и до конца, и был повышен до звания майора за проявленные заслуги"
+    pol "Не смотря на все сложности, с которыми нам пришлось столкнуться, преступник был пойман и сейчас находится в следственном изоляторе"
+    scene bg ending_2 1
+    "Кто-то" "Так ему и надо!"
+    pol "Но в ходе расследования мы пришли к неожиданному выводу: сам хакер не был повинен в неполадках в электросети"
+    scene bg ending_2 4
+    pol "За всем произошедшим стоял некий созданный аспирантом искусственный интеллект, который смог вырваться из изолированной среды, что и стало причиной многочисленных неполадок"
+    scene bg ending_2 1
+    pol "Тем не менее, подозреваемый будет пребывать под стражей до окончания следствия, далее его судьбу решит суд"
+    pol "Мы все с нетерпением ждём окончания такого... Футуристичного дела"
+    scene black with fade
     #(Антона сажают в тюрьму; Виктора повышают в звании; Хром вырывается в мировую сеть и начинает изучать планету и помогать людям)
         
+    "Получена концовка 3 из [endings]"
     return
