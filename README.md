@@ -8,7 +8,7 @@
 
 **Последняя версия новеллы:** 
 ---
-https://drive.google.com/file/d/1cElsj9ddkswd4guQVz0EEf32sRMLo-To/view?usp=drive_link
+https://drive.google.com/file/d/136A_1Sh2qaYqLkyeROvPHRM8aF2uGLNe/view?usp=drive_link
 
 **Артефакты:**
 ---
