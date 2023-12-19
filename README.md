@@ -16,6 +16,6 @@ https://drive.google.com/file/d/1cElsj9ddkswd4guQVz0EEf32sRMLo-To/view?usp=drive
 
 Графика и аудиоматериал: https://disk.yandex.ru/d/pYjh3996Sqf9Sg
 
-Сценарий:
+Сценарий: https://docs.google.com/spreadsheets/d/13RwyTz9zrRMHZmaIDp39PDpwN18kYwn2/edit?usp=sharing&ouid=105435467902534576438&rtpof=true&sd=true
 
 Аналитика:
