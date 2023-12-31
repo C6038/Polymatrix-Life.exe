@@ -570,7 +570,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Сделано с помощью {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Новелла \"Life.exe\" создана командой Polymatrix. Участники команды:\nВлад Судоплатов - тимлид\nЕвгений Стишенко - аналитик\nТимур Пулатов - дизайнер\nСтас Ефтеев - геймдизайнер\nАндрей Сбоев - разработчик\nСделано с помощью {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label

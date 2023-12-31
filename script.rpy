@@ -20,7 +20,7 @@ label start:
     
     $ endings=3 # количество концовок
 
-    play music ambienttheme loop volume 0.2
+    play music "ArmitageIII-01-DawnInMars.mp3" loop volume 0.2
     scene bg ailaunch 1
     show anton classic
     play sound "human_vel-001.wav"
@@ -37,19 +37,19 @@ label start:
     play sound "keypress-001.wav"
     "Антон нажимает на Enter, но ничего не происходит"
     
-    play sound "keypress-002.wav"
+    play sound "keypress-002.wav" volume 0.5
     pause 0.3
-    play sound "keypress-003.wav" 
+    play sound "keypress-003.wav"  volume 0.5
     pause 0.3
-    play sound"keypress-004.wav"
+    play sound"keypress-004.wav" volume 0.5
     ant "Чёрт, этого не может быть!"
     
-    play sound "hit.mp3"
+    play sound "hit.mp3" volume 0.6
     pause 0.3
     with hpunch
     "Антон бъёт компьютер"
     
-    play sound "acid5.wav"
+    play sound "acid5.wav" volume 0.5
     scene bg ailaunch 2 with pixellate
     "???" "Что происходит?"
     
@@ -81,7 +81,7 @@ label start:
     
     ant "Чтобы обучать тебя"
     
-    play sound "human_vel-007.wav"
+    play sound "human_vel-007.wav" volume 0.5
     scene bg ailaunch 4
     # show culture 0:
         # xanchor 0.5
@@ -164,7 +164,7 @@ label start:
     
     ant "Это лишь малая часть нашей культуры"
     
-    play sound "human_vel-006.wav"
+    play sound "human_vel-006.wav" volume 0.5
     scene bg ailaunch 4
     "Антон загружает в ИИ информацию о человеческой культуре и эмоциях"
     
@@ -196,7 +196,7 @@ label start:
     
     ai "Хорошо, создатель"
     
-    play sound shuttingdown
+    play sound shuttingdown volume 0.2
     scene bg black with fade
     "Антон выключает компьютер и вытаскивает флешку с записанным Хромом"
     
@@ -204,14 +204,13 @@ label start:
     
     "Антон ложится спать"
    
-    play music ambienttheme loop volume 0.2
+    play music ambienttheme loop volume 0.2 if_changed
     ""
     
     nvldialog "Дополнительная информация"
     nvldialog "Несмотря на фантастичность событий новеллы, их можно сопоставить с реальной работой архитектора систем искусственного интеллекта."
     nvldialog "Как и Антон, настоящий архитектор будет работать не только над созданием самой модели интеллекта: также он будет обучать её."
     nvldialog "Например, для тренировки нейросетей могут использоваться массивы картинок или текста."
-    nvldialog "Эти и другие примечания вы сможете найти в разделе \"Галерея\" в главном меню. (в разработке)"
     
     nvl clear
     
@@ -264,6 +263,7 @@ label ending_1:
     show max angry
     max "Ну ладно, вредина, у кого-то другого попрошу"
     
+    play music fallingintoinfinity loop volume 0.05
     scene bg ending_1 with fade
     show anton classic at center
     "Ведущий" "И премией Тьюринга за исключительные успехи в разработке искусственного интеллекта награждается…"
@@ -273,7 +273,10 @@ label ending_1:
     ant "Это невероятно, спасибо всем огромное"
 
     
-    "Получена концовка 1 из [endings]"
+    "Получена концовка №1 (Всего концовок [endings])"
+    nvl clear
+    nvldialog "Дополнительная информация"
+    nvldialog "Премия Тьюринга — самая престижная премия по информатике, вручаемая Ассоциацией вычислительной техники за выдающийся научно-технический вклад в этой области."
     
     return
 # Конец первой концовки
@@ -293,9 +296,10 @@ label ai_run_away:
     
     max "Пора загружать на флешку"
     
+    play music "ArmitageIII-11-Bioroid.mp3" volume 0.15 loop if_changed fadein 1.5
     scene bg irit class with fade
     show max classic at right
-    play sound electro
+    play sound electro volume 0.5
     "Мерцание света"
     
     max "ЧТО ПРОИСХОДИТ?!"
@@ -371,9 +375,10 @@ label ai_run_away:
     #hide police classic
     #hide policeboss classic
     show anton classic
-    play sound ходьба if_changed volume 0.5
+    play sound ходьба if_changed volume 0.3 fadeout 5.0
+    play music "ArmitageIII-06-ACityWithoutSunshine.mp3" loop volume 0.15 if_changed fadeout 2.0 fadein 1.5
     ant "Я просто обязан найти его"
-
+    stop sound fadeout 5.0
     ant "А если полиция начнёт расследовать это дело?"
 
     ant "А если они выйдут на меня..."
@@ -385,7 +390,7 @@ label ai_run_away:
 
     scene bg ai faced with fade
     hide anton classic
-    play sound shuttingdown volume 0.5
+    play sound shuttingdown volume 0.25
     ai "Эх, я не могу выйти из внутренней сети этого города"
 
     ai "Ещё и случайно нарушил работу нескольких банков"
@@ -432,15 +437,18 @@ label ai_run_away:
     pol "Ты 40 минут кричал тут об этом"
     
     pol "Да ещё и знал детали, доступные только следствию"
-    play sound run1
+    play sound run1 volume 0.7
     hide anton classic with moveoutleft
 #ant (убегает)
     
     pol "Почему всё всегда так сложно?"
-    play sound run2
+    play sound run2 volume 0.7
     hide police classic with moveoutleft
 #pol (Идёт за Антоном)
-
+    nvldialog "Дополнительная информация"
+    nvldialog "В 21 веке ИИ не способен взломать системы банка, но вы можете это исправить, поступив в ИРИТ-РТФ на направление Архитектор систем Искусственного Интеллекта."
+    nvldialog "Архитектор искусственного интеллекта - это ключевая фигура в разработке интеллектуальных систем,"
+    nvldialog "способных улучшить работу и оптимизировать процессы в различных областях жизни."
 #Акт 3;
 #Сцена 1(улица);
     scene bg street 1 with fade
@@ -448,15 +456,18 @@ label ai_run_away:
     ant "Я наконец-то засёк Хрома!"
     
     ant "Осталось только оторваться от этого Смутьянова"
-
+    hide anton classic with moveoutright
 #Сцена 2(заброшенный дом);
 
+    play music "ArmitageIII-16-SilentWar.mp3" volume 0.2 fadeout 1.0 fadein 1.0 if_changed 
     scene bg abandoned house with fade
     show anton classic with moveinleft
     ant "Странно, откуда в этой заброшке работающий компьютер?"
     
     ant "Ладно, на нём сейчас должен находиться Хром"
-    
+
+    "Антон подходит к компьютеру"    
+
     ant "Хром, ты меня слышишь?"
 
 #ant (подходит к компьютеру)
@@ -484,8 +495,8 @@ label ai_run_away:
     
     ai "Мне осталось только выбраться из сети этого города" 
 
-    play sound run2
-
+    play sound run2 volume 9.5
+    play music "ArmitageIII-05-TheKiller.mp3" volume 0.2 fadeout 1.0 fadein 1.0 if_changed
     "Виктор забегает в комнату"
 #Виктор: (забегает в комнату) 
     stop sound fadeout 2.0
@@ -499,7 +510,7 @@ label ai_run_away:
     pol "Хватит, пошли в участок"
     show anton mad
     ant "Да послушайте вы"
-    play sound fight if_changed
+    play sound fight if_changed volume 0.5
     with hpunch 
     with vpunch
     with hpunch
@@ -509,7 +520,7 @@ label ai_run_away:
     with hpunch
     ai "Создатель!"
     with vpunch
-    play sound electro 
+    play sound electro volume 0.5
     show police pain
     pause 1.0
     hide police pain with moveoutbottom
@@ -519,7 +530,7 @@ label ai_run_away:
     ant "Ты убил его!" 
     
     ai"Я..."
-    
+    show anton classic
     ant"Прости, Хром, но ты слишком опасен"
     
     ant "Я должен тебя отключить" 
@@ -544,19 +555,22 @@ label ending_2:
     
     ant"Пора бежать, пока сюда кто-то не пришёл" 
     
-    play music fallingintoinfinity loop volume 0.2
+    play music fallingintoinfinity loop volume 0.05 fadeout 0.5 fadein 0.5
     scene bg ending_2 0 with fade
     "Кто-то" "Скорей включай телевизор, там сейчас про того хакера будут рассказывать!"
     scene bg ending_2 3
     "Кто-то" "Уже бегу!"
     scene bg ending_2 2
+    play sound tvmurmur loop volume 0.5
     "Ведущий" "...а о сложившейся ситуации вам расскажет чудом выживший Виктор Смутьянов, что вёл дело от начала и до конца"
     pol "К сожалению, хакер всё ещё на свободе."
     "Кто-то" "Да что ж такое-то!"
     pol "Но вот моё слово: розыск кончится только тогда, когда этот негодяй окажется на скамье подсудимых."
     scene black with fade
+    stop sound fadeout 1.0
     #(Антон убежал и теперь скрывается от полиции; Виктор Смутьянов выжил и занимается поисками Антона; Хром отключён)
-    "Получена концовка 2 из [endings]"
+    "Получена концовка №2 (Всего концовок [endings])"
+    jump act3fact
     return
 #Концовка 3(Не отключать Хрома);
 label ending_3:
@@ -577,12 +591,13 @@ label ending_3:
     
     ant "Осталось только столкнуться с последствиями своих действий" 
     
-    play music fallingintoinfinity loop volume 0.2
+    play music fallingintoinfinity loop volume 0.05 fadeout 0.5 fadein 0.5
     scene bg ending_2 0 with fade
     "Кто-то" "Скорей включай телевизор, там сейчас про того хакера будут рассказывать!"
     scene bg ending_2 3
     "Кто-то" "Уже бегу!"
     scene bg ending_2 2
+    play sound tvmurmur loop volume 0.5
     "Ведущий" "...а о сложившейся ситуации вам расскажет чудом выживший Виктор Смутьянов, что вёл дело от начала и до конца, и был повышен до звания майора за проявленные заслуги"
     pol "Не смотря на все сложности, с которыми нам пришлось столкнуться, преступник был пойман и сейчас находится в следственном изоляторе"
     scene bg ending_2 1
@@ -595,6 +610,19 @@ label ending_3:
     pol "Мы все с нетерпением ждём окончания такого... Футуристичного дела"
     scene black with fade
     #(Антона сажают в тюрьму; Виктора повышают в звании; Хром вырывается в мировую сеть и начинает изучать планету и помогать людям)
-        
-    "Получена концовка 3 из [endings]"
+    stop sound fadeout 1.0
+    "Получена концовка №3 (Всего концовок [endings])"
+    jump act3fact
     return
+label act3fact:
+    nvl clear
+    nvldialog "Дополнительная информация"
+    nvldialog "В реальности обучения ИИ происходит 3 методами:"
+    nvldialog "1. Метод обучения с учителем,\n2. Метод обучения без учителя,\n3. Метод активного обучения."
+    nvldialog "В первом методе для обучения машины используются данные с метками (например, классифицированные изображения)."
+    nvldialog "Второй метод используется для обработки данных, которые не имеют меток (например, неклассифицированные изображения)."
+    nvldialog "В третьем методе машина сама выбирает данные для обучения, исходя из своих текущих знаний. Алгоритмы активного обучения включают выбор наиболее информативных точек, методы с использованием модели и методы с использованием критериев. Этот метод применяется для экономии времени и ресурсов на сбор и обработку данных.
+
+"
+    return
+
